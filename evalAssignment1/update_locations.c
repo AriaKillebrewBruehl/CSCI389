@@ -22,6 +22,12 @@ void update_coords(float * xs, float * ys, float * zs, float * vx, float * vy, f
     }
 }
 
+float sum(float * array) {
+    float sum = 0;
+    for (int i = 0; i < sizeof(array); i++) { sum += array[i];}
+    return sum;
+}
+
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
@@ -37,4 +43,5 @@ int main(int argc, char* argv[]) {
     float * vx = generate_random_list(size, 1);
     float * vy = generate_random_list(size, 1);
     float * vz = generate_random_list(size, 1);
+
 }
