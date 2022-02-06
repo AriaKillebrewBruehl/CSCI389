@@ -5,4 +5,4 @@
 #include<time.h>
 #include<math.h>
 
-int * generate_random_list(int size, int bound);
+float * generate_random_list(int size, int bound);

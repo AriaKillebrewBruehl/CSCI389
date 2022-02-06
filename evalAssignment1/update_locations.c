@@ -1,11 +1,12 @@
 #include "update_locations.h"
 
-int * generate_random_list(int size, int bound) {
-    static int* array;
-    array = (int*)malloc(size *sizeof(int));
+// Create a list of 'size' floating point numbers in the range [-bound, bound]
+float * generate_random_list(int size, int bound) {
+    static float* array;
+    array = (float*)malloc(size *sizeof(int));
 
     for (int i = 0; i < size; i++) {
-        int num = rand();
+        float num = (float)rand();
         array[i] = num;
     }
 
@@ -21,10 +22,10 @@ int main(int argc, char* argv[]) {
     int size = *argv[1];
     int iters = *argv[2];
     srand(size);
-    int * xs = generate_random_list(size, 1000);
-    int * ys = generate_random_list(size, 1000);
-    int * zs = generate_random_list(size, 1000);
-    int * vx = generate_random_list(size, 1);
-    int * vy = generate_random_list(size, 1);
-    int * vz = generate_random_list(size, 1);
+    float * xs = generate_random_list(size, 1000);
+    float * ys = generate_random_list(size, 1000);
+    float * zs = generate_random_list(size, 1000);
+    float * vx = generate_random_list(size, 1);
+    float * vy = generate_random_list(size, 1);
+    float * vz = generate_random_list(size, 1);
 }
