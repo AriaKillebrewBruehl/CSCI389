@@ -13,6 +13,15 @@ float * generate_random_list(int size, int bound) {
     return array;
 }
 
+// Update position by velocity, one time-step
+void update_coords(float * xs, float * ys, float * zs, float * vx, float * vy, float * vz){
+    for (int i = 0; i < sizeof(xs); i ++) {
+        xs[i] = xs[i] + vx[i];
+        ys[i] = ys[i] + vy[i];
+        zs[i] = zs[i] + vz[i];
+    }
+}
+
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
