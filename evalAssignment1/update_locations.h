@@ -4,9 +4,9 @@
 #include<stdlib.h>
 #include<time.h>
 
-float * generate_random_list(int32_t size, int32_t bound);
+double * generate_random_list(int32_t size, int32_t bound);
 
-void update_coords(float * xs, float * ys, float * zs, float * vx, float * vy, float * vz, int32_t size);
+void update_coords(double * xs, double * ys, double * zs, double * vx, double * vy, double * vz, int32_t size);
 
-float sum(float * array, int32_t size);
+double sum(double * array, int32_t size);
 
