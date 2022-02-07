@@ -57,7 +57,7 @@ int main(int argc, char* argv[]) {
     time_taken = ((double)time_taken + ((double)stop.tv_nsec - start.tv_nsec)) * 1e-9;
     time_taken = time_taken * 1e6 / obj_count;
     printf("%fus\n",time_taken);
-    printf("Final checksum is: %f", chksum);
+    printf("Final checksum is: %d", chksum);
 
     free(xs);
     free(ys);
