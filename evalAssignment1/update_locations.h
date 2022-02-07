@@ -3,9 +3,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
-#include<math.h>
 
-float * generate_random_list(int size, int bound);
+float * generate_random_list(int32_t size, int32_t bound);
 
 void update_coords(float * xs, float * ys, float * zs, float * vx, float * vy, float * vz);
 
