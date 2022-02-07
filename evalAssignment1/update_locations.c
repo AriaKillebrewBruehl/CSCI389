@@ -15,23 +15,23 @@ float * generate_random_list(int32_t size, int32_t bound) {
 }
 
 // Update position by velocity, one time-step
-void update_coords(float * xs, float * ys, float * zs, float * vx, float * vy, float * vz){
-    for (int i = 0; i < sizeof(xs); i ++) {
+void update_coords(float * xs, float * ys, float * zs, float * vx, float * vy, float * vz, int32_t size){
+    for (int i = 0; i < size; i ++) {
         xs[i] = xs[i] + vx[i];
         ys[i] = ys[i] + vy[i];
         zs[i] = zs[i] + vz[i];
     }
 }
 
-float sum(float * array) {
+float sum(float * array, int32_t size) {
     float sum = 0;
-    for (int i = 0; i < sizeof(array); i++) { sum += array[i];}
+    for (int i = 0; i < size; i++) { sum += array[i];}
     return sum;
 }
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
-         fprintf(stderr, "Required arguments: vector_length(N) and iterations_num(M)");
+        fprintf(stderr, "Required arguments: vector_length(N) and iterations_num(M)");
         return -1;
     }
 
@@ -48,22 +48,22 @@ int main(int argc, char* argv[]) {
     struct timespec start, stop;
     clock_gettime(CLOCK_MONOTONIC, &start);
     for (int i=0; i < iters; i++) {
-        update_coords(xs, ys, zs, vx, vy, vz);
+        update_coords(xs, ys, zs, vx, vy, vz, size);
     }
     clock_gettime(CLOCK_MONOTONIC, &stop);
-    float chksum = sum(xs) + sum(ys) + sum(zs);
+    float chksum = sum(xs, size) + sum(ys, size) + sum(zs, size);
+    double obj_count = (double)size*(double)iters;
     double time_taken;
     time_taken = (stop.tv_sec - start.tv_sec) * 1e9;
     time_taken = (time_taken + (stop.tv_nsec - start.tv_nsec)) * 1e-9;
-    time_taken = time_taken * 1e6 / (size * iters);
+    time_taken = time_taken * 1e6 / obj_count;
     printf("%fus\n",time_taken);
     printf("Final checksum is: %f", chksum);
 
-    // free(xs);
-    // free(ys);
-    // free(zs);
-    // free(vx);
-    // free(vy);
-    // free(vz);
-
+    free(xs);
+    free(ys);
+    free(zs);
+    free(vx);
+    free(vy);
+    free(vz);
 }
