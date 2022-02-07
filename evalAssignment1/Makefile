@@ -1,5 +1,5 @@
 CXX=gcc
-CXXFLAGS=-Wall -Wextra -pedantic -Werror -std=c11 -O3
+CXXFLAGS=-fsanitize=address -Wall -Wextra -pedantic -Werror -std=c11 -O3
 LDFLAGS=$(CXXFLAGS)
 OBJ=$(SRC:.cc=.o)
 
