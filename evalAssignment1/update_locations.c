@@ -3,14 +3,13 @@
 // Create a list of 'size' floating point numbers in the range [-bound, bound]
 float * generate_random_list(int32_t size, int32_t bound) {
     float* array;
-    array = (float*)malloc(size);
+    array = (float*)malloc(sizeof(int32_t) * size);
 
 
     for (int i = 0; i < size; i++) {
         float num = (float)(rand() % (2*bound+1)) - bound;
         array[i] = num;
     }
-
     return array;
 }
 
