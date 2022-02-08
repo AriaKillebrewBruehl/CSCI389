@@ -51,12 +51,12 @@ int main(int argc, char* argv[]) {
     }
     clock_gettime(CLOCK_MONOTONIC, &stop);
     float chksum = sum(xs, size) + sum(ys, size) + sum(zs, size);
-    double obj_count = (double)size*(double)iters;
+    double object_count = (double)size*(double)iters;
     double time_taken;
     time_taken = (stop.tv_sec - start.tv_sec) * 1e9;
     time_taken = (time_taken + (stop.tv_nsec - start.tv_nsec)) * 1e-9;
-    time_taken = time_taken * 1e6 / obj_count;
-    printf("%fus\n",time_taken);
+    time_taken = time_taken * 1e6 / object_count;
+    printf("Time taken in microseconds: %fus\n",time_taken);
     printf("Final checksum is: %f", chksum);
 
     free(xs);
