@@ -1,5 +1,5 @@
 CXX=g++-10
-CXXFLAGS=-fsanitize=address -Wall -Wextra -pedantic  -std=c17 -O3
+CXXFLAGS=-fsanitize=address -Wall -Wextra -pedantic  -std=c++17 -o3
 LDFLAGS=$(CXXFLAGS)
 OBJ=$(SRC:.cc=.o)
 
