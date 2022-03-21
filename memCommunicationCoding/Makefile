@@ -1,15 +1,24 @@
-CXX=g++-10
-CXXFLAGS=-fsanitize=address -Wall -Wextra -pedantic  -std=c++17
-LDFLAGS=$(CXXFLAGS)
-OBJ=$(SRC:.cc=.o)
+CXX=gcc
+CXX_FLAGS=-Wall -Wextra -pedantic -std=c11 -O3
+C++_FLAGS=-Wall -Wextra -pedantic -std=c++11 -O3
+.PHONY: all clean
+TARGETS=benchmarking barriers
 
-all:  bench_marking
+all: $(TARGETS)
 
-bench_marking:part1.o
-	$(CXX) $(LDFLAGS) -o $@ $^
+benchmarking.o: part1.h
+benchmarking.o: part1.c
+	$(CXX) $(CXX_FLAGS) -c -o $@ $<
 
-%.o.cc: %.c %.h
-	$(CXX) $(CXXFLAGS) $(OPTFLAGS) -c -o $@ $<
+benchmarking: benchmarking.o
+	$(CXX) $(CXX_FLAGS) -o $@ $^
+
+barriers.o: barriers.hh
+barriers.o: barriers.cc
+	g++ $(C++_FLAGS) -c -o $@ $<
+
+barriers: barriers.o
+	g++ $(C++_FLAGS) -o $@ $^
 
 clean:
-	rm -rf *.o bench_marking
+	rm -f *~ *.o $(TARGETS)
